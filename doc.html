@@ -6,4 +6,10 @@ fetch("index.html")
   .then(data => {
     document.getElementById("header").innerHTML = data;
   });
+
+const data = localStorage.getItem("page");
+var html=document.getElementById("header").innerHTML
+if(data==1){
+  html.getElementById("content")="메신저봇?\n어쩌라는거지요.\n나는 그런 거 몰라요!"
+}
 </script>
