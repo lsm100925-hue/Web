@@ -12,7 +12,7 @@
   <nav>
     <b>목차</b>
     <a href="index.html">메인 화면</a>
-    <a href="doc.html">메신저봇</a>
+    <a href="doc.html"  onclick="send(1)">메신저봇</a>
     <a href="#">기타 잡소리</a>
   </nav>
 
@@ -36,3 +36,9 @@
 
 </body>
 </html>
+
+<script>
+function sned(value) {
+  localStorage.setItem("page", value);
+}
+</script>
