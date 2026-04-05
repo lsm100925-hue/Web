@@ -35,12 +35,16 @@
       korea: [
         { q: "대한민국의 수도는?", a: "서울" },
         { q: "우리나라 국화(꽃)는?", a: "무궁화" },
-        { q: "가장 큰 섬은?", a: "제주도" }
+        { q: "가장 큰 섬은?", a: "제주도" },
+        { q: "광화문 앞에 있는 동상의 주인공은?", a: "이순신" },
+        { q: "비빔밥으로 유명한 도시는?", a: "전주" }
       ],
       math: [
         { q: "5 x 9 = ?", a: "45" },
         { q: "100 - 37 = ?", a: "63" },
-        { q: "2의 3제곱은?", a: "8" }
+        { q: "2의 3제곱은?", a: "8" },
+        { q: "7 x 8 = ?", a: "56" },
+        { q: "150 나누기 3은?", a: "50" }
       ]
     };
 
@@ -48,8 +52,18 @@
     let currentIndex = 0;
     let score = 0;
 
+    // 배열을 무작위로 섞는 함수 (Fisher-Yates Shuffle)
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
     function selectCategory(type) {
-      currentQuestions = quizDb[type];
+      // 문제를 복사한 뒤 무작위로 섞음
+      currentQuestions = shuffleArray([...quizDb[type]]); 
       currentIndex = 0;
       score = 0;
       
@@ -81,7 +95,6 @@
         feedback.innerHTML = `<span style='color:red'>❌ 오답 (정답: ${correctVal})</span>`;
       }
 
-      // 답을 확인하고 0.8초 뒤에 다음 문제로
       setTimeout(() => {
         currentIndex++;
         showQuestion();
