@@ -1,50 +1,74 @@
+/* 기본 레이아웃 */
+body {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f6f7;
-    }
+#header {
+  background: #ffffff;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  padding: 30px;
+  text-align: center;
+}
 
-    header {
-      background-color: #2d2f34;
-      color: white;
-      padding: 15px;
-      font-size: 20px;
-      font-weight: bold;
-    }
+/* 화면 전환용 클래스 */
+.hidden {
+  display: none;
+}
 
-    .container {
-      display: flex;
-    }
+/* 버튼 스타일 */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 8px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
 
-    nav {
-      width: 220px;
-      background: #ffffff;
-      border-right: 1px solid #ddd;
-      padding: 15px;
-    }
+.btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
 
-    nav a {
-      display: block;
-      text-decoration: none;
-      color: #0366d6;
-      margin: 8px 0;
-    }
+.btn-category {
+  background-color: #007bff;
+}
 
-    main {
-      flex: 1;
-      padding: 20px;
-      background: white;
-    }
+.btn-category:hover {
+  background-color: #0056b3;
+}
 
-    h1 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
+/* 입력창 스타일 */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+  font-size: 16px;
+  outline: none;
+}
 
-    .box {
-      background: #f0f0f0;
-      padding: 10px;
-      margin: 10px 0;
-      border-left: 4px solid #0366d6;
-    }
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+#feedback {
+  height: 24px;
+  margin-top: 10px;
+  font-weight: bold;
+}
