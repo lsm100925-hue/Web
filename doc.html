@@ -2,30 +2,98 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <title>커스텀 퀴즈 앱</title>
   <link rel="stylesheet" href="css.css">
-  <body>
-    <div id="header"></div>
-  </body>
-  
-</html>
-<script>
-fetch("index.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("header").innerHTML = data;
+</head>
+<body>
 
-    const page = localStorage.getItem("page");
-    if (page === "1") {
-      const innerContent = document
-        .getElementById("header")
-        .querySelector("#content");
+  <div id="header">
+    <div id="content">
+      <div id="setup-area">
+        <h2>문제를 선택하세요</h2>
+        <button class="btn btn-category" onclick="selectCategory('korea')">🇰🇷 한국 상식</button>
+        <button class="btn btn-category" onclick="selectCategory('math')">🔢 수학 퀴즈</button>
+      </div>
 
-      if (innerContent) {
-        innerContent.innerHTML = `
-          <ul>
-          </ul>
-        `;
+      <div id="quiz-area" class="hidden">
+        <h3 id="question-text">질문 준비 중...</h3>
+        <input type="text" id="user-answer" placeholder="답을 적고 엔터를 누르세요" onkeypress="if(event.keyCode==13) submitAnswer()">
+        <button class="btn" onclick="submitAnswer()">정답 확인</button>
+        <div id="feedback"></div>
+      </div>
+
+      <div id="result-area" class="hidden">
+        <h2>퀴즈 종료!</h2>
+        <p id="final-score" style="font-size: 1.2em;"></p>
+        <button class="btn" onclick="location.reload()">처음으로 돌아가기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quizDb = {
+      korea: [
+        { q: "대한민국의 수도는?", a: "서울" },
+        { q: "우리나라 국화(꽃)는?", a: "무궁화" },
+        { q: "가장 큰 섬은?", a: "제주도" }
+      ],
+      math: [
+        { q: "5 x 9 = ?", a: "45" },
+        { q: "100 - 37 = ?", a: "63" },
+        { q: "2의 3제곱은?", a: "8" }
+      ]
+    };
+
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+
+    function selectCategory(type) {
+      currentQuestions = quizDb[type];
+      currentIndex = 0;
+      score = 0;
+      
+      document.getElementById('setup-area').classList.add('hidden');
+      document.getElementById('quiz-area').classList.remove('hidden');
+      showQuestion();
+    }
+
+    function showQuestion() {
+      if (currentIndex < currentQuestions.length) {
+        document.getElementById('question-text').innerText = currentQuestions[currentIndex].q;
+        document.getElementById('user-answer').value = '';
+        document.getElementById('feedback').innerText = '';
+        document.getElementById('user-answer').focus();
+      } else {
+        showFinalResult();
       }
     }
-  });
-</script>
+
+    function submitAnswer() {
+      const userVal = document.getElementById('user-answer').value.trim();
+      const correctVal = currentQuestions[currentIndex].a;
+      const feedback = document.getElementById('feedback');
+
+      if (userVal === correctVal) {
+        score++;
+        feedback.innerHTML = "<span style='color:blue'>⭕ 정답!</span>";
+      } else {
+        feedback.innerHTML = `<span style='color:red'>❌ 오답 (정답: ${correctVal})</span>`;
+      }
+
+      // 답을 확인하고 0.8초 뒤에 다음 문제로
+      setTimeout(() => {
+        currentIndex++;
+        showQuestion();
+      }, 800);
+    }
+
+    function showFinalResult() {
+      document.getElementById('quiz-area').classList.add('hidden');
+      document.getElementById('result-area').classList.remove('hidden');
+      document.getElementById('final-score').innerText = 
+        `총 ${currentQuestions.length}개 중 ${score}개를 맞혔습니다!`;
+    }
+  </script>
+</body>
+</html>
