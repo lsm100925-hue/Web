@@ -7,40 +7,32 @@
 </head>
 <body>
 
-<header>
-  <h1>역사 학습 사이트</h1>
-</header>
-
-<div class="container">
-  <nav>
-    <b>목차</b>
-    <a href="index.html" onclick="send(0)">메인 화면</a>
-    <a href="doc.html" onclick="send(1)">역사 퀴즈</a>
-  </nav>
-
-  <main>
-    <h1>메인 페이지</h1>
-
-    <div class="box">
-      여기는 1-9반의 역사 학습 사이트입니다.
+  <div id="header">
+    <h1>📜 역사 학습 사이트</h1>
+    <p>1학년 9반 친구들을 위한 공간입니다.</p>
+    
+    <div class="box" style="margin: 20px 0; padding: 15px; background: #f1f3f5; border-radius: 10px; font-size: 0.9em;">
+      원하는 메뉴를 선택하여 학습을 시작하세요!
     </div>
 
-    <h2>소개</h2>
-    <p>우리 반 친구들을 위한 역사 퀴즈와 학습 자료가 준비되어 있습니다.</p>
+    <div id="menu-area">
+      <button class="btn" onclick="location.href='index.html'">🏠 메인 화면</button>
+      <button class="btn btn-category" onclick="goToQuiz(1)">✍️ 역사 퀴즈 풀기</button>
+    </div>
 
-    <h2>내용</h2>
-    <ul id="content">
-      <li>목차에서 '역사 퀴즈'를 눌러 실력을 테스트해보세요!</li>
-    </ul>
-  </main>
-</div>
+    <div id="footer" style="margin-top: 20px; color: #888; font-size: 0.8em;">
+      &copy; 2026 1-9 History Class
+    </div>
+  </div>
 
-<script>
-function send(value) {
-  // str(value) -> String(value)로 수정 (자바스크립트 표준)
-  localStorage.setItem("page", String(value));
-}
-</script>
+  <script>
+    function goToQuiz(value) {
+      // 로컬 스토리지에 페이지 상태 저장
+      localStorage.setItem("page", String(value));
+      // doc.html로 이동
+      location.href = "doc.html";
+    }
+  </script>
 
 </body>
 </html>
