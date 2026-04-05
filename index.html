@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css.css">
-  <title>역사</title>
+  <title>역사 학습 사이트</title>
 </head>
 <body>
 
-<header>역사 학습 사이트</header>
+<header>
+  <h1>역사 학습 사이트</h1>
+</header>
 
 <div class="container">
   <nav>
     <b>목차</b>
-    <a href="index.html">메인 화면</a>
-    <a href="doc.html"  onclick="send(1)">역사 퀴즈</a>
+    <a href="index.html" onclick="send(0)">메인 화면</a>
+    <a href="doc.html" onclick="send(1)">역사 퀴즈</a>
   </nav>
 
   <main>
@@ -24,21 +26,21 @@
     </div>
 
     <h2>소개</h2>
-    <p>아래에 설명이 나옵니다.</p>
+    <p>우리 반 친구들을 위한 역사 퀴즈와 학습 자료가 준비되어 있습니다.</p>
 
     <h2>내용</h2>
     <ul id="content">
-      <li>아직 내용이 없습니다</li>
+      <li>목차에서 '역사 퀴즈'를 눌러 실력을 테스트해보세요!</li>
     </ul>
-
   </main>
 </div>
 
-</body>
-</html>
-
 <script>
 function send(value) {
-  localStorage.setItem("page", str(value));
+  // str(value) -> String(value)로 수정 (자바스크립트 표준)
+  localStorage.setItem("page", String(value));
 }
 </script>
+
+</body>
+</html>
