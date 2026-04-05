@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <title>커스텀 퀴즈 앱</title>
+  <title>퀴즈</title>
   <link rel="stylesheet" href="css.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <div id="content">
       <div id="setup-area">
         <h2>문제를 선택하세요</h2>
-        <button class="btn btn-category" onclick="selectCategory('korea')">🇰🇷 한국 상식</button>
+        <button class="btn btn-category" onclick="selectCategory('stone')">선사시대</button>
         <button class="btn btn-category" onclick="selectCategory('math')">🔢 수학 퀴즈</button>
       </div>
 
@@ -32,12 +32,21 @@
 
   <script>
     const quizDb = {
-      korea: [
-        { q: "대한민국의 수도는?", a: "서울" },
-        { q: "우리나라 국화(꽃)는?", a: "무궁화" },
-        { q: "가장 큰 섬은?", a: "제주도" },
-        { q: "광화문 앞에 있는 동상의 주인공은?", a: "이순신" },
-        { q: "비빔밥으로 유명한 도시는?", a: "전주" }
+      stone: [
+        { q: "주먹도끼는 어느 시대의 유물인가 (~기)?", a: "구석기" },
+        { q: "사냥이나 채집을 주로 하였던 시대는? (~기)?", a: "구석기" },
+        { q: "간석기는 어느 시대? (~기)", a: "식석기" },
+        { q: "구석기에는 움집에 살았다 예/아니", a: "아니" },
+        { q: "청동기는 최초의 00사회였다", a: "계급" },
+        { q: "구석기 말에는 날씨가 비교적 (따뜻했다 / 추웠다)", a: "따뜻했다" },
+        { q: "구석기에는 0집에 살았다", a: "막" },
+        { q: "구석기의 시작은 기원전 oo만년 전이다", a: "70" },
+        { q: "신석기의 시작은 기원전 oooo년 전이다", a: "8000" },
+        { q: "연나라는 중국 동북쪽에 있다 예/아니", a: "예" },
+        { q: "군장은 어느 시기에 등장했는가? (~기)", a: "청동기" },
+        { q: "고조선은 어떤 나라에 멸망했는가?", a: "한" },
+        { q: "고조선은 한 군현이 설치되지 이전 법률은 무엇인가?", a: "8조법" },
+        { q: "신석기에는 농사가 주돤 식량 공급원이였다. 예/아니", a: "아니" }
       ],
       math: [
         { q: "5 x 9 = ?", a: "45" },
